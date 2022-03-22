@@ -1,0 +1,13 @@
+function p = I_pb(x,n,ns,data,J,N)
+
+for i=1:20
+  for j=1:n
+%      time1 = cputime;
+%      score = score_dags(data, ns, x(i,j), 'scoring_fn', 'bic', 'params', []);
+     score = Improve_score_dags(data, ns, x(i,j),J,N, 'scoring_fn', 'bic', 'params', []);
+%      time = cputime - time1
+     f(j)=score;
+   end
+   [maxf,i_index]=max(f);
+   p(i)={x{i,i_index}};
+end
